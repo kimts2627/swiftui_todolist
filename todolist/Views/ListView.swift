@@ -8,11 +8,28 @@
 import SwiftUI
 
 struct ListView: View {
+    
+    @State var items: [String] = [
+        "First",
+        "Second",
+        "Third",
+    ]
+    
     var body: some View {
         List {
-            ListRowView()
+            ForEach(items, id: \.self) {
+                item in ListRowView(title: item)
+            }
         }
+        .listStyle(PlainListStyle())
         .navigationTitle("Aaron's Todo List 🥲")
+        .navigationBarItems(
+            leading: EditButton(),
+            trailing:
+                NavigationLink(
+                    "Add", destination: AddView()
+                )
+        )
     }
 }
 
@@ -24,12 +41,4 @@ struct ListView_Previews: PreviewProvider {
     }
 }
 
-struct ListRowView: View {
-    var body: some View {
-        HStack {
-            Image(systemName: "checkmark.circle")
-            Text("The first!")
-            Spacer()
-        }
-    }
-}
+
