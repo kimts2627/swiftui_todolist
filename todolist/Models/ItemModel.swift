@@ -9,7 +9,7 @@ import Foundation
 
 // Immutable Struct --> 안에 let이 있듯이 변경할 수 없다.
 // 메서드 통해서만 update 가능
-struct ItemModel: Identifiable {
+struct ItemModel: Identifiable, Codable {
     let id: String
     let title: String
     let isCompleted: Bool
