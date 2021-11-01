@@ -22,7 +22,7 @@ struct AddView: View {
                 TextField("Type something here...", text: $textFieldText)
                     .padding(.horizontal)
                     .frame(height: 55)
-                    .background(Color(white: 0.9))
+                    .background(Color(UIColor.secondarySystemBackground))
                     .cornerRadius(10)
                 
                 Button(action: saveButtonPressed, label: {
@@ -69,6 +69,12 @@ struct AddView_Previews: PreviewProvider {
         NavigationView {
             AddView()
         }
+        .preferredColorScheme(.light)
+        .environmentObject(ListViewModel())
+        NavigationView {
+            AddView()
+        }
+        .preferredColorScheme(.dark)
         .environmentObject(ListViewModel())
     }
 }
